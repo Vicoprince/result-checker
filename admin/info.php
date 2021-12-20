@@ -1,6 +1,8 @@
 <?php 
 
 	session_start();
+// echo($_SESSION['uid']);exit();
+
 
 	if(isset($_SESSION['uid'])){
 		echo "";
@@ -11,12 +13,13 @@
 	}
 
 	include('../assets/adminheader.php');
+
  ?>
 
- <div class="content" style="text-align: left;">
-  <div class="upper">
+<div class="content" style="text-align: left;">
+	<div class="upper">
 
-<?php 
+		<?php 
 	
 	if(isset($_REQUEST['id'])){
 
@@ -25,10 +28,10 @@
 ?>
 
 
-<?php
+		<?php
 	include("../dbcon.php");
 
-  	$qry = "SELECT * FROM `student2` WHERE `id` = '$id'";
+  	$qry = "SELECT * FROM `student2` WHERE `roll_no` = '$id'";
 
 		$run = mysqli_query($con,$qry);
 
@@ -41,64 +44,111 @@
 				$count++;
 				?>
 
-				<table  style="margin-top: 20px; margin-left: 80px;" cellpadding="7px">
-					
-						
-						<tr>
-							<td colspan="2"><img src="../dataimg/<?php echo $data['image'];?>" style = "max-width: 150px; margin-top: 30px;"/><br><br></td>
-						</tr>
+		<table style="margin-top: 20px; margin-left: 80px;" cellpadding="7px">
 
-						<tr>
-							<th>Registration No.</th>
-							<td><?php echo $data['roll_no']; ?></td>
-							<th>Name</th>
-							<td><?php echo $data['fname']." ".$data['lname']; ?></td>
-						</tr>
 
-						<tr>
-							<th>Date OF Birth</th>
-							<td><?php echo $data['dob']; ?></td>
-							<th>Email</th>
-							<td><?php echo $data['email']; ?></td>
-						</tr>
+			<tr>
+				<td colspan="2"><img src="../dataimg/<?php echo $data['image'];?>"
+						style="max-width: 150px; margin-top: 30px;" /><br><br></td>
+			</tr>
 
-						<tr><th>Mobile</th><td><?php echo $data['mobile']; ?></td>
-							<th>Gender</th><td><?php echo $data['gender']; ?></td></tr>
-						
+			<tr>
+				<th>Registration No.</th>
+				<td><?php echo $data['roll_no']; ?></td>
+				<th>Name</th>
+				<td><?php echo $data['fname']." ".$data['lname']; ?></td>
+			</tr>
 
-						<tr rowspan="2"><th>Address</th><td><?php echo $data['address']; ?></td>
-							<th>CNIC</th><td><?php echo $data['cnic']; ?></td>
-						</tr>
-						
+			<tr>
+				<th>Date OF Birth</th>
+				<td><?php echo $data['dob']; ?></td>
+				<th>Email</th>
+				<td><?php echo $data['email']; ?></td>
+			</tr>
 
-						<tr><th>ZIP</th><td><?php echo $data['zip']; ?></td>
-							<th>Country</th><td><?php echo $data['country']; ?></td>
-						</tr>
-						
+			<tr>
+				<th>Mobile</th>
+				<td><?php echo $data['mobile']; ?></td>
+				<th>Gender</th>
+				<td><?php echo $data['gender']; ?></td>
+			</tr>
+			<tr>
+				<th>Program</th>
+				<td><?php echo $data['program']; ?></td>
+			</tr>
 
-						<tr><th>Domicile</th><td><?php echo $data['domicile']; ?></td>
-							<th>SSC Board</th><td><?php echo $data['ssc_board']; ?></td>
-						</tr>
-						
-
-						<tr><th>SSC Percentage</th><td><?php echo $data['ssc_perc']; ?></td>
-							<th>SSC Year Of Passing</th><td><?php echo $data['ssc_year']; ?></td>
-						</tr>
-
-						<tr><th>HSC Board</th><td><?php echo $data['hsc_board']; ?></td>
-							<th>HSC Percentage</th><td><?php echo $data['hsc_perc']; ?></td>
-						</tr>
-						
-						<tr><th>HSC Year Of Passing</th><td><?php echo $data['hsc_year']; ?></td>
-							<th>Program</th><td><?php echo $data['program']; ?></td>
-						</tr>
-						
-				</table>
-				<?php
+		</table>
+		<?php
 			}
 		}
 ?>
-  </div>
- </div>
- </body>
- </hmtl> 	
+
+
+<!-- Upload of result test -->
+
+
+
+
+<form action="fileprocess.php" method="Post" enctype="multipart/form-data">
+ 	<input type="file" name="file">
+ 	<input type="submit" name="Submit" value="Upload">
+ </form>
+
+<?php 
+	$Submit = "";
+
+	$files = scandir("../Uploads");
+
+	for ($a=2; $a < count($files) ; $a++) { 
+		
+		?>
+		<!-- <p>
+			<a download="<?php echo $files[$a] ?>" href="Uploads/<?php echo $files[$a] ?>"><?php echo $files[$a] ?></a>
+		</p> -->
+		<?php
+	}
+
+	// if(isset(["Submit"])){
+
+		
+
+	// }
+
+ ?>
+
+
+
+<!-- Quit -->
+	</div>
+
+	<br /><br />
+		<table align="center" class="table table-bordered" id="show_course">
+			<thead class="alert-info">
+				<tr bgcolor="#31708f" height="40px">
+					<th>Course_Title</th>
+					<th>Course_Code</th>
+					<th>Course_Unit</th>
+				</tr>
+			</thead>
+			<tbody>
+				<?php
+					include_once("../dbcon.php");
+				
+
+					$query = mysqli_query($con, "SELECT * FROM `data`where `sid` = $id") or die(mysqli_error());
+					while($fetch = mysqli_fetch_array($query)){
+					
+				?>
+				<tr>
+					<td><?php echo $fetch['course_title']?></td>
+					<td align="center"><?php echo $fetch['co_code']?></td>
+					<td align="center"><?php echo $fetch['subject_unit']?></td>
+					</tr>
+				<?php
+					}
+				?>
+			</tbody>
+		</table>
+</div>
+</body>
+</html>

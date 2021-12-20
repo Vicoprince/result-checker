@@ -13,14 +13,14 @@
 ?>
 
 
-<div class="content" style="text-align: left;">
+<div class="container" style="text-align: left;">
 
 <?php
 include("../dbcon.php");
 
 		$id = $_SESSION['sid'];
 
-		$qry = "SELECT * FROM `student2` WHERE `id` = '$id'";
+		$qry = "SELECT * FROM `student2` WHERE `roll_no` = '$id'";
 
 		$run = mysqli_query($con,$qry);
 
@@ -33,7 +33,7 @@ include("../dbcon.php");
 				$count++;
 				?>
 
-				<table  style="margin-top: 20px; margin-left: 80px;" cellpadding="7px">
+				<table  style="margin-top: 20px; margin-left: 50px;" cellpadding="7px">
 					
 						
 						<tr>
@@ -56,32 +56,7 @@ include("../dbcon.php");
 
 						<tr><th>Mobile</th><td><?php echo $data['mobile']; ?></td>
 							<th>Gender</th><td><?php echo $data['gender']; ?></td></tr>
-						
-
-						<tr rowspan="2"><th>Address</th><td><?php echo $data['address']; ?></td>
-							<th>CNIC</th><td><?php echo $data['cnic']; ?></td>
-						</tr>
-						
-
-						<tr><th>ZIP</th><td><?php echo $data['zip']; ?></td>
-							<th>Country</th><td><?php echo $data['country']; ?></td>
-						</tr>
-						
-
-						<tr><th>Domicile</th><td><?php echo $data['domicile']; ?></td>
-							<th>SSC Board</th><td><?php echo $data['ssc_board']; ?></td>
-						</tr>
-						
-
-						<tr><th>SSC Percentage</th><td><?php echo $data['ssc_perc']; ?></td>
-							<th>SSC Year Of Passing</th><td><?php echo $data['ssc_year']; ?></td>
-						</tr>
-
-						<tr><th>HSC Board</th><td><?php echo $data['hsc_board']; ?></td>
-							<th>HSC Percentage</th><td><?php echo $data['hsc_perc']; ?></td>
-						</tr>
-						
-						<tr><th>HSC Year Of Passing</th><td><?php echo $data['hsc_year']; ?></td>
+						<tr> 
 							<th>Program</th><td><?php echo $data['program']; ?></td>
 						</tr>
 						
@@ -90,7 +65,21 @@ include("../dbcon.php");
 			}
 		}
 ?>
+<?php 
 
+
+$files = scandir("../Uploads");
+
+for ($a=2; $a < count($files) ; $a++) { 
+	
+	?>
+	<p>
+		<a download="<?php echo $files[$a] ?>" href="../Uploads/<?php echo $files[$a] ?>"><?php echo $files[$a] ?></a>
+	</p>
+	<?php
+}
+
+?>
 
 </div>
 	

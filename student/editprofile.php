@@ -11,7 +11,7 @@
 	include('../assets/studentheader.php');
  ?>
 
- <div class="content">
+ <div class="contents">
  	<div class="upper">
  		<h2>Edit Profile</h2>
 

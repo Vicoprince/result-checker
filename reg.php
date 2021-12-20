@@ -39,81 +39,21 @@
 			Mobile Number
 			
 			<input type="text" name="mobile" maxlength="11" > <br>
-			
-
- 
-<!----- Address -------------------------City--------------------------------->
-		
-			Address 
-			<textarea name="address" rows="3" cols="22"></textarea> <br>
-
-			City
-			<input type="text" name="city" maxlength="30"> <br>
-			
-
-			
-		
-<!----- Country ------------------------Zip---------------------------------->
- 
- 	
-			Country
-			<input type="text" name="country"> <br>
-
-			Zip Code
-			<input type="text" name="zip" maxlength="6"> <br>
-
-
-<!----- CNIC ---------------------------------------------------------->
-		
-			CNIC
-			<input type="number" name="cnic" maxlength="13"> <br>
-			
-		
-
-<!----- Domicile ---------------------------------------------------------->
-	
-			Domicile
-			<input type="text" name="domicile"/> <br>
-
-
-
-
-
-<!----- Qualification---------------------------------------------------------->
-		
-				
-				SSC
-				<input type="text" name="ssc_board" maxlength="30"> <br>
-				<input type="text" name="ssc_perc" maxlength="30"> <br>
-				<input type="text" name="ssc_year" maxlength="30"> <br>
-		
-			 
-			hsc
-				<input type="text" name="hsc_board" maxlength="30"> <br>
-				<input type="text" name="hsc_perc" maxlength="30"> <br>
-				<input type="text" name="hsc_year" maxlength="30"> <br>
-		
-		
- 
 		
 
 <!----- Program ---------------------------------------------------------->
 		
 			Program
 			
-			BBA
+			CSE
 			<input type="radio" name="program" value="BBA">
-			BSCS
+			BOP
 			<input type="radio" name="program" value="BSCS">
-			ACF
+			CHE
 			<input type="radio" name="program" value="ACF">
-			AML
+			DMT
 			<input type="radio" name="program" value="AML">
 			
-			<br>
-
-			Roll No.
-			<input type="text" name="roll_no" maxlength="5">
 			<br>
 
 <!-- ------------image---------------- -->
@@ -162,10 +102,10 @@
 		move_uploaded_file($tempname, "dataimg/$imgname");
 
 
-		$qry = "INSERT INTO `student2`(`id`, `fname`, `lname`, `dob`, `email`, `mobile`, `gender`, `address`, `cnic`, `zip`, `country`, `domicile`, `ssc_board`, `ssc_perc`, `ssc_year`, `hsc_board`, `hsc_perc`, `hsc_year`, `program`, `roll_no`, `image`, `password`)
+		$qry = "INSERT INTO `student2`(`id`, `fname`, `lname`, `dob`, `email`, `mobile`, `gender`, `program`, `image`, `password`)
 
 
-				VALUES  ('','$fname', '$lname', '$dob', '$email', '$mobile', '$gender', '$address', '$cnic', '$zip', '$country', '$domicile', '$ssc_board', '$ssc_perc', '$ssc_year', '$hsc_board', '$hsc_perc', '$hsc_year', '$program', '$roll_no','$imgname','student')" ;
+				VALUES  ('','$fname', '$lname', '$dob', '$email', '$mobile', '$gender', '$program','$imgname','student')" ;
 		
 		$run = mysqli_query($con,$qry);
 

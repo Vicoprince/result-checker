@@ -21,14 +21,14 @@
 <div class="container">
   <form action="forgotpass.php" method="post">
     
-      <h3>Forgtot Password?</h3>
+      <h3>Forgot Password?</h3>
 
     <label for="roll_no">Registration No.</label>
     <input type="text" name="roll_no" placeholder="Your Registration">
 
     <label for="ques">Select security question</label>
     <select id="ques" name="ques">
-      <option value="1">First Pet</option>
+      <option value="1">Place of birth </option>
       <option value="2">Date of birth</option>
       <option value="3">----</option>
     </select>

@@ -11,7 +11,7 @@ body {
   margin: 0;
   font-family: Arial, Helvetica, sans-serif;
   background-color: #999;
-  background-image: url("images/bg2.jpg");
+  background-image: url("images/bg.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   overflow-y: hidden;

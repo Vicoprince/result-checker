@@ -9,26 +9,28 @@
 		}
 
 	include('../assets/adminheader.php');
- ?>
-
- <div class="content">
+?>
+<script src="../js/jquery-3.2.1.min.js"></script>	
+<script src="../js/bootstrap.js"></script>
+<div class="container">
   <div class="upper">
   	<h2>Student Info</h2>
   
-	<table>
+	<table align="center" width="450" height="50" class="table table-bordered">
 	
   		<form action="admindash.php" method="POST">
   			<tr>
-		  		<td><input type="text" name="name" placeholder="Enter Student Name" style="margin-right: 30px; padding: 5px 30px;"></td>
+		  		<td colspan="3"><input type="text" name="name" placeholder="Enter Student Name" style="margin-right: 30px; padding: 5px 30px;"></td>
 		  		
 		  	
 		  		<td>
 		  			<select name="program" style=" padding: 5px 80px;">
 						<option value="">Program</option>
-						<option value="BBA">BBA</option>
-						<option value="BSCS">BSCS</option>
-						<option value="ACF">ACF</option>
-						<option value="AML">AML</option>
+						<option value="CSE">CSE</option>
+						<option value="CHE">CHE</option>
+						<option value="BOP">BOP</option>
+						<option value="DMT">DMT</option>
+						<option value="CNSS">CNSS</option>
 					</select>
 				</td>
 
@@ -40,15 +42,13 @@
 	</table>
 </div>
 
-<table  width="90%" align="center" style="margin-top: 30px; text-align: center;">
+<table  width="70%" align="center" style="margin-top: 30px; text-align: center;">
 	<tr style="background-color: #800000; color: #fff;">
 		<th>No</th>
 		<th>Image</th>
-		<th>Std ID</th>
+		<th>Matric No</th>
 		<th>Name</th>
-		<th>Country</th>
 		<th>Contact</th>
-		<th>Adress</th>
 		<th>Program</th>
 		<th></th>
 
@@ -73,7 +73,7 @@
 			$count = 0;
 			while($data = $run->fetch_assoc()){
 				$count++;
-				$id = $data['id'];
+				$id = $data['roll_no'];
 				?>
 
 				<tr>
@@ -81,11 +81,9 @@
 					<td><img src="../dataimg/<?php echo $data['image'];?>" style = "max-width: 70px"/></td>
 					<td><?php echo $data['roll_no']; ?></td>
 					<td><?php echo $data['fname']." ".$data['lname']; ?></td>
-					<td><?php echo $data['country']; ?></td>
 					<td><?php echo $data['mobile']; ?></td>
-					<td><?php echo $data['address']; ?></td>
 					<td><?php echo $data['program']; ?></td>
-					<td><a href="info.php?id=<?php echo $id ?>">Veiw</a></td>
+					<td><a href="info.php?id=<?php echo $id ?>">View</a></td>
 				</tr>
 
 				<?php
@@ -101,7 +99,7 @@
 		$run = mysqli_query($con,$qry);
 		$count = 0;
 		while($data = $run->fetch_assoc()){
-				$id = $data['id'];
+				$id = $data['roll_no'];
 				$count++;
 				?>
 
@@ -110,11 +108,9 @@
 					<td><img src="../dataimg/<?php echo $data['image'];?>" style = "max-width: 70px"/></td>
 					<td><?php echo $data['roll_no']; ?></td>
 					<td><?php echo $data['fname']." ".$data['lname']; ?></td>
-					<td><?php echo $data['country']; ?></td>
 					<td><?php echo $data['mobile']; ?></td>
-					<td><?php echo $data['address']; ?></td>
 					<td><?php echo $data['program']; ?></td>
-					<td><a href="info.php?id=<?php echo $id ?>">Veiw</a></td>
+					<td><a href="info.php?id=<?php echo $id ?>">View</a></td>
 				</tr><?php
 
 	}

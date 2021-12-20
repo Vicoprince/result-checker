@@ -57,7 +57,7 @@ if (isset($_POST['submit'])) {
 
 	if(!$row || $row == 0){
 
-		echo "username or password incorrect";
+		echo "<script> alert('username or password incorrect') </script>";
 	
 	}
 

@@ -1,8 +1,12 @@
 <?php 
+    // db connect code
+    $servername = "localhost";
+    $username = "root";
+    $password = "";
+    $dbname = "sis";
+    $con = mysqli_connect($servername, $username, $password, $dbname);
 
-	$con = mysqli_connect("localhost","id11824567_localhost","osama123","id11824567_sms");
-
-	if($con == false){
-		?> <script type="text/javascript">alert('Database Connection Failed');</script><?php
-	}
- ?>
+    if (!$con){
+       echo "<script>alert('Database Connection Failed');</script>";
+    }
+?>

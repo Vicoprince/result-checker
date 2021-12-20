@@ -54,7 +54,7 @@ if (isset($_POST['submit'])) {
 
 	if(!$row || $row == 0){
 
-		echo "ID or password incorrect";
+		echo "<script> alert('ID or password incorrect') </script>";
 	
 	}
 
@@ -68,7 +68,7 @@ if (isset($_POST['submit'])) {
 
 		session_start();
 		
-		$_SESSION['sid'] = $id;
+		$_SESSION['sid'] = $roll_no;
 		header('location:student/studentdash.php');
 		
 		}
