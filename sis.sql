@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 29, 2021 at 06:04 PM
+-- Generation Time: Dec 21, 2021 at 11:39 PM
 -- Server version: 5.6.16
 -- PHP Version: 5.5.11
 
@@ -57,7 +57,7 @@ CREATE TABLE IF NOT EXISTS `course` (
   `semester` varchar(50) NOT NULL,
   `level` varchar(20) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=9 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=15 ;
 
 --
 -- Dumping data for table `course`
@@ -71,7 +71,13 @@ INSERT INTO `course` (`id`, `session`, `programme`, `course_title`, `course_code
 (5, '2018/2019', 'Part-Time', 'Public Speaking', 'MTH 101', '5', 'Second Semester', 'ND 1'),
 (6, '2018/2019', 'Part-Time', 'Public Speaking', 'MTH 101', '5', 'Second Semester', 'ND 1'),
 (7, '2018/2019', 'Part-Time', 'Public Speaking', 'MTH 101', '3', 'Second Semester', 'ND 1'),
-(8, '2021/2022', 'Part-Time', 'Public Speaking', 'CHT101', '5', 'Second Semester', 'ND 2');
+(8, '2021/2022', 'Part-Time', 'Public Speaking', 'CHT101', '5', 'Second Semester', 'ND 2'),
+(9, '', '', '', '', '', '', ''),
+(10, '', '', '', '', '', '', ''),
+(11, '', '', '', '', '', '', ''),
+(12, '', '', '', '', '', '', ''),
+(13, '', '', '', '', '', '', ''),
+(14, '', '', '', '', '', '', '');
 
 -- --------------------------------------------------------
 
@@ -84,16 +90,25 @@ CREATE TABLE IF NOT EXISTS `data` (
   `course_title` text NOT NULL,
   `co_code` varchar(30) NOT NULL,
   `subject_unit` int(2) NOT NULL,
+  `sid` varchar(20) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=12 ;
 
 --
 -- Dumping data for table `data`
 --
 
-INSERT INTO `data` (`id`, `course_title`, `co_code`, `subject_unit`) VALUES
-(1, 'IT Essential ', 'CHT 101', 3),
-(2, 'Use of English ', 'GNS 101', 2);
+INSERT INTO `data` (`id`, `course_title`, `co_code`, `subject_unit`, `sid`) VALUES
+(1, 'Use of English ', 'GNS 101', 2, '248222'),
+(2, 'IT Essential ', 'CHT 101', 1, '248222'),
+(4, 'Trigonometry ', 'MTH 103', 3, '123452'),
+(5, 'Business Law', 'BOP 209', 2, '123452'),
+(6, 'Graphic design ', 'MMP112', 2, '248217'),
+(7, 'Trigonometry ', 'CHT 101', 3, '248222'),
+(8, 'Algebraic and Complex number ', 'MTH 103', 2, '248222'),
+(9, 'Basic Electronics', 'CHT 103', 3, '248222'),
+(10, 'script', 'mmp111', 3, '247142'),
+(11, 'Statistics', 'STAT101', 3, '248222');
 
 -- --------------------------------------------------------
 
@@ -155,18 +170,19 @@ CREATE TABLE IF NOT EXISTS `student2` (
   `ques` text NOT NULL,
   `answer` text NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8mb4 AUTO_INCREMENT=9 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8mb4 AUTO_INCREMENT=7 ;
 
 --
 -- Dumping data for table `student2`
 --
 
 INSERT INTO `student2` (`id`, `fname`, `lname`, `dob`, `email`, `mobile`, `gender`, `program`, `roll_no`, `image`, `password`, `ques`, `answer`) VALUES
-(1, 'Olu-Ajimati', 'Victor', '2001-05-22', 'oluajimativictor@gmail.com', '08121956127', 'Male', 'CSE', 248222, '', 'jesusvick', '2', '2001'),
-(2, 'Adeogun', 'Samuel', '2000-02-28', 'adeogunsamuel@gmail.com', '08012439234', 'Male', 'BOP', 123452, 'FB_IMG_15545114680236504.jpg', 'password', '1', 'lagos'),
-(6, 'Ariyo', 'Joshua', '2021-08-02', 'trinitejosh@gmail.com', '0806655983', 'Male', 'CSE', 248217, 'demo.jpg', 'trinite', '1', 'ondo'),
-(7, 'toy', 'hus', '2021-07-28', 'mjkkjek@gmail.com', '0806655983', 'Female', 'DMT', 123456, '67326622_331589544417364_6453377396635598848_n.jpg', 'password', '1', 'akure'),
-(8, 'grace', 'shedrack', '2021-04-14', 'shedygrace@gmail.com', '08102130723', 'Female', 'CNSS', 564556, '79362252_180909979719910_5801422393557647360_n.jpg', 'qwerty', '1', 'lagos');
+(1, 'Adeogun', 'Samuel', '2000-02-28', 'adeogunsamuel@gmail.com', '08012439236', 'Male', 'BOP', 123452, 'IMG_20200312_155014.jpg', 'password', '1', 'lagos'),
+(2, 'Ariyo', 'Joshua', '2021-08-02', 'trinitejosh@gmail.com', '0806655983', 'Male', 'CSE', 248217, 'FB_IMG_15666643189058345.jpg', 'trinite', '1', 'ondo'),
+(3, 'toy', 'hus', '2021-07-28', 'mjkkjek@gmail.com', '0806655983', 'Female', 'DMT', 123456, '67326622_331589544417364_6453377396635598848_n.jpg', 'password', '1', 'akure'),
+(4, 'grace', 'shedrack', '2021-04-14', 'shedygrace@gmail.com', '08102130723', 'Female', 'CNSS', 564556, '79362252_180909979719910_5801422393557647360_n.jpg', 'qwerty', '1', 'lagos'),
+(5, 'Olu-Ajimati', 'Victor', '2020-06-11', 'oluajimativictor@gmail.com', '08121956126', 'Male', 'CSE', 248222, 'Snapchat-202446721.jpg', 'jesusvick', '1', 'osun '),
+(6, 'moses', 'c. kanu', '0000-00-00', 'flowerboyet@gmail.com', '07065769845', 'Male', 'DMT', 247142, 'Sports Now_Synnopsis.png', '11111111', '2', 'july 15');
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
